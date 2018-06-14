@@ -27,4 +27,6 @@ get "/viaje/nuevo" do
 	erb :viajenew
 end
 
-	
+get "/import" do 	
+	erb :import
+end

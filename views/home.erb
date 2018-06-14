@@ -1,1 +1,85 @@
-<h1 class="header"><%= @title %></h1>
+<div class="container">
+<h1 class="header text-center"><strong>Trabajo Final</strong></h1>
+<h3 class="header">Condiciones de Aprobación:</h3>
+<br>
+<h4 class="header">Fecha límite de entrega: 16/07/2018.</h4>
+<h4>Forma de entrega:</h4>
+<ul>
+	<li>El código debe estar en un repositorio de github.</li>
+	<li>Al repositorio de github debemos tener acceso los profesores:
+		<ul>
+			<li>Carlos Monti (<span style="color:blue">montic@ar.ibm.com</span>)</li>
+			<li>Nicolas Nappe (<span style="color:blue">nappe@ar.ibm.com</span>)</li>
+			<li>Ivan Kuzel (<span style="color:blue">kuzeliva@ar.ibm.com</span>)</li>
+			<li>Diego Tabares (<span style="color:blue">tabares@ar.ibm.com</span>)</li>
+		</ul>
+	</li>
+	<li>Una vez listo para entregar, el link al repositorio debe ser enviado por mail a los profesores
+listados en el punto anterior, utilizando el sujeto "Code Academy Nivel 2 – TP Final"</li>
+	</ul>
+		<h4 class="header">Enunciado:</h4>
+		<p>Necesitamos construir una interfaz web para consulta de la utilización de las bicicletas públicas de la
+Ciudad de Buenos Aires.</p>
+<p>Contamos con un set de datos con información de los viajes realizados, y otro con información de los
+usuarios en formato CSV (Comma Separated Value).</p>
+<h5 class="header">La solución debe ser una aplicación Ruby - Sinatra que cumpla con los siguientes puntos:</h5>
+<ul><li>
+	Se deben crear los modelos de clase necesarios para resolver el problema.</li>
+<li>Se deben guardar las estructuras necesarias para resolver el problema utilizando YAML-STORE.</li>
+<li>Si inicialmente los repositorios de datos en formato ".yml "están vacíos, se deben inicializar
+importando los datos provistos en formato csv.</li>
+<li>Debe tener una página inicial donde se muestre el enunciado del TP y un menú de navegación
+para acceder a las distintas secciones (soluciones a los distintos puntos pedidos).</li>
+<li>Debe aprovechar las ventajas de utilizar un layout.</li>
+<li>Tener rutas y vistas para obtener información y/o mostrar resultados necesarios para resolver
+los diferentes enunciados.</li>
+<li>Utilizar CSS (Se recomienda usar Bootstrap, no es obligatorio).</li>
+</ul>
+<h4 class="header">Dataset:</h4>
+<ul>
+	<li>users.csv <a href="https://ibm.box.com/s/9czn4dgcu40zxpujcxdyfohheq3kixrg">(https://ibm.box.com/s/9czn4dgcu40zxpujcxdyfohheq3kixrg)</a></li>
+	<li>bici.csv <a href="https://ibm.box.com/s/m0jsb9k9voqj8sp435mshnec4w8cb3ey">(https://ibm.box.com/s/m0jsb9k9voqj8sp435mshnec4w8cb3ey)</a></li>
+</ul>
+<br>
+<h3 class="header">Requerimientos funcionales:</h3>
+<ol>
+	<li>Poder dar de alta usuarios (basarse en el siguiente boceto): <br>
+		<img src="/images/bocetoformTP.png" class="img-fluid" alt="Responsive image"></li>
+	<li>Poder modificar el Nombre/Apellido de un usuario.</li>
+	<li>Poder dar de alta un viaje.</li>
+	<li>Poder dar de alta estaciones.</li>
+	<li>Emitir un listado (en formato tabla) de los últimos 10 viajes, mostrando:
+		<ol type="a">
+			<li>Nombre y Apellido del usuario.</li>
+			<li>Fecha y hora de retiro.</li>
+			<li>Fecha y hora de devolución.</li>
+ 			<li>Duración del viaje.</li>
+		</ol></li>
+		<li>Tener una página con la siguiente información:
+			<ol type="a">
+				<li>¿De qué estación se obtuvieron más bicis?</li>
+				<li>¿A qué estación se devolvieron más bicis?</li>
+				<li>¿En qué fecha se retiraron más bicis?</li>
+			</ol></li>
+			<li>Bajo una sección de estadísticas, mostrar:
+				<ol type="a">
+					<li>Uso por día de la semana (tomar en cuenta el siguiente boceto): <br>
+						<img src="/images/bocetoenunciado.png" class="img-fluid" alt="Responsive image"></li>
+					</li>
+					<li>Uso por franja horaria - tomando el horario de retiro de la bici - (tomar en cuenta el
+siguiente boceto): <br>
+<img src="/images/bocetopills3.png" class="img-fluid" alt="Responsive image">
+</li>
+					<li>TOP 10 de uso por usuario (por cantidad de viajes), mostrando nombre y apellido.</li>
+				</ol></li>
+</ol>
+<br>
+<h3 class="header">Documentación:</h3>
+<ul>
+	<li><a href="https://ruby-doc.org/core-2.2.0/Time.html">https://ruby-doc.org/core-2.2.0/Time.html</a></li>
+	<li><a href="https://github.com/lambdaweb/pillchart">https://github.com/lambdaweb/pillchart</a></li>
+	<li><a href="https://github.com/sinatra/sinatra">https://github.com/sinatra/sinatra</a></li>
+	<li><a href="https://getbootstrap.com/">https://getbootstrap.com/</a></li>
+	<li><a href="https://docs.ruby-lang.org/en/2.4.0/YAML/Store.html">https://docs.ruby-lang.org/en/2.4.0/YAML/Store.html</a></li>
+</ul>
+		</div>
