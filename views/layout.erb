@@ -1,0 +1,61 @@
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="/vendors/bootstrap/css/bootstrap.css" type="text/css">
+<script src="/jquery/jquery.js"></script>
+<script src="/jquery/jquery-ui.js"></script>
+<title>TPFINAL</title>
+</head>
+<body>
+<nav class="navbar navbar-default">
+  
+    <button type="button" class="navbar-toggle pull-left" data-toggle="collapse" data-target="#myNavbar">
+        <span class="glyphicon glyphicon-th-list"></span>
+      </button>
+    <div class="navbar-header">
+     <a class="navbar-brand" href="#">TP FINAL</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="/">Inicio</a></li>
+        <li class="nav-item dropdown">
+          <a class="dropdown-toggle" id="usuariosdropdown" data-toggle="dropdown" href="#" aria-haspopup="true" aria-expanded="false">
+           Usuarios
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="usuariosdropdown">
+           <li class="dropdown-item"><a href="/usuario/nuevo">Nuevo</a></li>
+           <li class="dropdown-item" ><a href="/usuario/modificar">Modificar</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="dropdown-toggle" id="estacionesdropdown" data-toggle="dropdown" href="#" aria-haspopup="true" aria-expanded="false">
+           Estaciones
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="estacionesdropdown">
+           <li class="dropdown-item"><a href="/estacion/nuevo">Nuevo</a></li>
+           <li class="dropdown-item" ><a href="/estacion/modificar">Modificar</a></li>
+          </ul>
+          </li>
+        <li><a href="/viaje/nuevo">Viajes</a></li> 
+      </ul>
+    </div>
+
+</nav>
+
+<%= yield %>
+
+<!-- Footer -->
+<footer class="page-footer font-small mdb-color lighten-3 pt-4 mt-4">
+  <div class="container text-center text-md-left">
+<span class="text-muted"><strong>Developed by Matias Fabian Hernandez</strong></span>
+</div>
+  <div class="footer-copyright text-center py-3">
+      <span class="text-muted">Powered by SINATRA</span>
+  </div>
+</footer>
+
+<script src="/vendors/bootstrap/js/bootstrap.js"></script>
+
+</body>
+</html>
