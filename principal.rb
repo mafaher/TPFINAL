@@ -27,10 +27,7 @@ get "/viaje/nuevo" do
 	erb :viajenew
 end
 
-get "/importar/usuarios" do 	
-	erb :importusers
-end
-
-get "/importar/bicis" do
-	erb :importbicis
+get "/importar/:name" do 	
+	@name=params[:name]
+		erb :import
 end
