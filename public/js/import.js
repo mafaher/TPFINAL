@@ -46,7 +46,7 @@
         tableresponsive.append(table);
         $("#table").html("");
         $("#table").append(tableresponsive);
-
+        $("#enviar").removeClass("disable").attr("disabled",false);
    		 }
 
 

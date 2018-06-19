@@ -3,3 +3,4 @@ ruby "2.5.1"
 gem 'sinatra', '~> 1.4'
 gem 'yaml_store'
 gem 'shotgun'
+gem "csv-3.0.0"

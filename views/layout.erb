@@ -1,51 +1,47 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="/vendors/bootstrap/css/bootstrap.css" type="text/css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
 <script src="/jquery/jquery.js"></script>
 <script src="/jquery/jquery-ui.js"></script>
 <title>TPFINAL</title>
 </head>
 <body>
-<nav class="navbar navbar-default">
-  
-    <button type="button" class="navbar-toggle pull-left" data-toggle="collapse" data-target="#myNavbar">
-        <span class="glyphicon glyphicon-th-list"></span>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">TP FINAL</a>
+    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#myNavbar" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">>
+        <span class="navbar-toggler-icon"></span>
       </button>
-    <div class="navbar-header">
-     <a class="navbar-brand" href="#">TP FINAL</a>
-    </div>
 
     <div class="collapse navbar-collapse" id="myNavbar">
-      <ul class="nav navbar-nav">
-        <li class="active"><a href="/">Inicio</a></li>
-        <li class="nav-item dropdown">
-          <a class="dropdown-toggle" id="usuariosdropdown" data-toggle="dropdown" href="#" aria-haspopup="true" aria-expanded="false">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active"><a class="nav-link" href="/">Inicio</a></li>
+        <li class="nav-item dropdown">  
+          <a class="nav-link dropdown-toggle" id="usuariosdropdown" data-toggle="dropdown" href="#" aria-haspopup="true" aria-expanded="false">
            Usuarios
           </a>
-          <ul class="dropdown-menu" aria-labelledby="usuariosdropdown">
-           <li class="dropdown-item"><a href="/usuario/nuevo">Nuevo</a></li>
-           <li class="dropdown-item" ><a href="/usuario/modificar">Modificar</a></li>
-          </ul>
+          <div class="dropdown-menu" aria-labelledby="usuariosdropdown">
+           <a class="dropdown-item" href="/usuario/nuevo">Nuevo</a>
+           <a class="dropdown-item" href="/usuario/modificar">Modificar</a>
         </li>
         <li class="nav-item dropdown">
-          <a class="dropdown-toggle" id="estacionesdropdown" data-toggle="dropdown" href="#" aria-haspopup="true" aria-expanded="false">
+          <a class="nav-link dropdown-toggle" id="estacionesdropdown" data-toggle="dropdown" href="#" aria-haspopup="true" aria-expanded="false">
            Estaciones
           </a>
-          <ul class="dropdown-menu" aria-labelledby="estacionesdropdown">
-           <li class="dropdown-item"><a href="/estacion/nuevo">Nuevo</a></li>
-           <li class="dropdown-item" ><a href="/estacion/modificar">Modificar</a></li>
-          </ul>
+          <div class="dropdown-menu" aria-labelledby="estacionesdropdown">
+           <a class="dropdown-item" href="/estacion/nuevo">Nuevo</a>
+           <a class="dropdown-item" href="/estacion/modificar">Modificar</a>
+          </div>
           </li>
-        <li><a href="/viaje/nuevo">Viajes</a></li> 
+        <li><a class="nav-link" href="/viaje/nuevo">Viajes</a></li> 
         <li class="nav-item dropdown">
-          <a class="dropdown-toggle" id="estacionesdropdown" data-toggle="dropdown" href="#" aria-haspopup="true" aria-expanded="false">
+          <a class="nav-link dropdown-toggle" id="estacionesdropdown" data-toggle="dropdown" href="#" aria-haspopup="true" aria-expanded="false">
            Importar
           </a>
-          <ul class="dropdown-menu" aria-labelledby="estacionesdropdown">
-           <li class="dropdown-item"><a href="/importar/usuarios">Usuarios</a></li>
-           <li class="dropdown-item" ><a href="/importar/bicis">Bicis</a></li>
-          </ul>
+          <div class="dropdown-menu" aria-labelledby="estacionesdropdown">
+           <a class="dropdown-item" href="/importar/usuarios">Usuarios</a>
+           <a class="dropdown-item" href="/importar/bicis">Bicis</a>
+          </div>
       </ul>
     </div>
 
@@ -55,15 +51,16 @@
 
 <!-- Footer -->
 <footer class="page-footer font-small mdb-color lighten-3 pt-4 mt-4">
-  <div class="container text-center text-md-left">
+  <div class="footer-copyright text-center py-3"">
 <span class="text-muted"><strong>Developed by Matias Fabian Hernandez</strong></span>
-</div>
-  <div class="footer-copyright text-center py-3">
+
+  <br>
       <span class="text-muted">Powered by SINATRA</span>
   </div>
 </footer>
 
-<script src="/vendors/bootstrap/js/bootstrap.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
 
 </body>
 </html>
