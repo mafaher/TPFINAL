@@ -4,11 +4,11 @@ class Usuario
 	attr_accessor :nombre, :apellido, :sexo, :edad
 	attr_reader :idusuario, :fechacreacion
 
-	def initialize(nombre, apellido, sexo="null", edad="null", fechacreacion="null")
+	def initialize(nombre="noname", apellido="nosurname", sexo="null", edad="null", fechacreacion="null")
 		@nombre = nombre 
 		@apellido = apellido
 		@sexo = sexo 
-		@edad = edad 
+		@edad = edad.to_i
 		@fechacreacion = fechacreacion
 
 	end
@@ -18,7 +18,6 @@ class Usuario
 
 		@store = YAML::Store.new 'usuarios.yml'
 		@store.transaction do 	
-	    @store['usuarios'] ||= {}
         @store['usuarios'][@store['usuarios'].length] = objuser
     end
 
@@ -27,10 +26,9 @@ end
 
 class Metodousuario
 
-		def modificarusuario(id, objuser)
+		def modificarusuario(objuser, id)
 		@store = YAML::Store.new 'usuarios.yml'
 		@store.transaction do 	
-	    @store['usuarios'] ||= {}
         @store['usuarios'][id] = objuser
     end
 	end
@@ -38,6 +36,12 @@ class Metodousuario
 	def traerusuario()
 		@store = YAML::Store.new 'usuarios.yml'
 		@usuarios = @store.transaction { @store['usuarios'] }
+	end
+
+	def traerusuarioporid(id)
+		@store = YAML::Store.new 'usuarios.yml'
+		@usuarios = @store.transaction { @store['usuarios'][id.to_i] }
+
 	end
 
 	def traercantidad()

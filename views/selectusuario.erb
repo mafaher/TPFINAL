@@ -1,0 +1,24 @@
+<br>
+
+<div class="container">
+<div class="card">
+	<div class="card-header">
+		<h5>Seleccione usuario a modificar</h5>
+	</div>
+	<div class="card-body">
+		<form action="/usuario/modificar" method="POST">
+				<div class="form-group">
+				<label for="id">Usuarios (Nombre - Apellido)</label>
+				<select name="id" id="id" class="custom-select">
+					<% @objusuario.each do |item| %>
+					<option value=<%= item[0] %>><%= item[1].nombre + " " + item[1].apellido %> </option>
+					<% end %>
+				</select>
+				</div>
+				<div class="form-group">
+					<button class="btn btn-success" type="submit">Enviar</button>
+				</div>
+			</form>
+			</div>
+				</div>
+</div>

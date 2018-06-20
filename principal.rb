@@ -14,7 +14,26 @@ end
 
 get "/usuario/modificar" do
 	@objusuario = Metodousuario.new().traerusuario()
+
+	erb :selectusuario
+end
+
+post "/usuario/modificar" do
+	@id=params[:id]
+	@objusuarioA=Metodousuario.new().traerusuarioporid(@id)
 	erb :modificarusuario
+end
+
+post "/usuario/modificar/:id" do
+	nombre = params[:name]
+	apellido = params[:surname]
+	sexo=params[:sexo]
+	edad=params[:edad]
+	fcreacion=params[:fcreacion]
+	@id=params[:id].to_i
+	@objusuario=Usuario.new(nombre, apellido, sexo, edad, fcreacion)
+	@some = Metodousuario.new().modificarusuario(@objusuario,@id)
+	erb :testingpar
 end
 
 get "/estacion/nuevo" do	
