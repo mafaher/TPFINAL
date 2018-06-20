@@ -1,35 +1,8 @@
---- &1
+---
 usuarios:
   0: !ruby/object:Usuario
-    nombre: Matatata
-    apellido: hernan
-    sexo: M
-    edad: 32
-    fechacreacion: 19/6/2018
-  1: !ruby/object:Usuario
-    nombre: mar
-    apellido: asd0000
-    sexo: M
-    edad: 50
-    fechacreacion: 19/6/2018
-  2: !ruby/object:Usuario
-    nombre: check
-    apellido: some01
+    nombre: akdaa
+    apellido: alsdlksa01
     sexo: M
     edad: 30
-    fechacreacion: 19/6/2018
-  3: !ruby/object:Usuario
-    nombre: Matatahernan
-    apellido: hernando
-    sexo: F
-    edad: 81
-    fechacreacion: 19/6/2018
-    store: !ruby/object:Psych::Store
-      opt: {}
-      filename: usuarios.yml
-      abort: false
-      ultra_safe: false
-      thread_safe: false
-      lock: !ruby/object:Thread::Mutex {}
-      rdonly: false
-      table: *1
+    fechacreacion: 20/6/2018
