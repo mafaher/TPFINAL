@@ -32,7 +32,8 @@
 
 ##  Clase Viaje: 
 ##### Propiedades:
-* Fecha retiro (DD/MM/AAAA HH:MM) - reader
+* Fecha retiro (DD/MM/AAAA)
+* Hora de Retiro (HH:MM)
 * EstRetiro (Id) - r/w
 * EstDestino (Id)- r/w
 * TiempoUso  (HH:MM:SS) r/w

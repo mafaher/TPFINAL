@@ -21,7 +21,7 @@ get "/usuario/modificar" do
 end
 
 post "/usuario/modificar" do
-	@id=params[:id]
+	@id=params[:id].to_i
 	@objusuarioA=Metodo.new().traerentidadporid(@id, 'usuarios')
 	erb :modificarusuario
 end
@@ -65,6 +65,8 @@ post "/estacion/modificar/:id" do
 end
 
 get "/viaje/nuevo" do  
+	@objestacion = Metodo.new().traerentidad("estaciones")
+	@objusuario = Metodo.new().traerentidad("usuarios")
 	erb :viajenew
 end
 

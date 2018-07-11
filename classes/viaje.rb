@@ -8,15 +8,9 @@ class Viaje
 		@iduser = iduser
 		@estdestino = estdestino
 		@estretiro = estretiro
-
-
 	end
 
-	def crearviaje()
-
-	end
-
-	def motrarultimosdiez()
+	def mostrarultimosdiez()
 
 	end
 

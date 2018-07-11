@@ -4,5 +4,11 @@ usuarios:
     nombre: akdaa
     apellido: alsdlksa01
     sexo: M
-    edad: 30
+    edad: 31
     fechacreacion: 20/6/2018
+  1: !ruby/object:Usuario
+    nombre: serenade
+    apellido: shoushi
+    sexo: M
+    edad: 22
+    fechacreacion: 11/7/2018

@@ -1,1 +1,66 @@
-<h1>Nuevo Viaje</h1>
+<!--		@fretiro = fretiro
+		@tiempouso = tiempouso
+		@iduser = iduser
+		@estdestino = estdestino
+		@estretiro = estretiro
+!-->
+
+<br>
+<script type="text/javascript">
+$(function () {
+	$('#datepicker').datepicker();
+	$('.clockpicker').clockpicker();
+	       });	
+</script> 
+
+	<div class="container">
+		<div class="card">
+			<div class="card-header">
+				<h5></h5>
+			</div>
+			<div class="card-body">
+				<form action="/usuario/nuevo" method="POST">
+					<div class="container">
+						<div class="row">
+							<div class="col-sm-3">
+								<div class="form-group">
+	        						<label for="rdate">Fecha de retiro</label>
+	           						<input type='text' name="rdate" class="form-control" id='datepicker' placeholder="dd/mm/YYYY" />
+	           					</div>
+							</div>
+							<div class="col-sm-3">
+								<div class="form-group">
+	        						<label for="rtime">Hora de retiro</label>
+	        						<div class="input-group clockpicker" data-placement="left" data-align="top" data-autoclose="true">
+	           						<input type='text' name="rtime" class="form-control" id='timeformat' placeholder="HH:MM" />
+	           						<span class="input-group-addon">
+	        <span class="glyphicon glyphicon-time"></span>
+	    </span>
+	    </div>
+	    </div>
+							</div>
+								</div>
+	    <div class="form-group">
+					<label for="id">Estaciones</label>
+					<select name="id" id="id" class="custom-select">
+						<% @objestacion.each do |item| %>
+						<option value=<%= item[0] %>><%= item[1].nombre %></option>
+						<% end %>
+					</select>
+					</div>
+					<div class="form-group">
+					<label for="id">Usuarios (Nombre - Apellido)</label>
+					<select name="id" id="id" class="custom-select">
+						<% @objusuario.each do |item| %>
+						<option value=<%= item[0] %>><%= item[1].nombre + " " + item[1].apellido %> </option>
+						<% end %>
+					</select>
+					</div>
+						<div class="form-group">
+							<button class="btn btn-success" type="submit">Enviar</button>	
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>

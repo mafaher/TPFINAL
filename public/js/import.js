@@ -51,7 +51,7 @@
 
 
     	reader.onerror = function (evt) {
-       console.log("error reading file");
+       window.alert("error reading file");
    		 }
    		 reader.readAsText(file);
 		}
