@@ -8,7 +8,6 @@
 <br>
 <script type="text/javascript">
 $(function () {
-	$('#datepicker').datepicker();
 	$('.clockpicker').clockpicker();
 	       });	
 </script> 
@@ -19,43 +18,55 @@ $(function () {
 				<h5></h5>
 			</div>
 			<div class="card-body">
-				<form action="/usuario/nuevo" method="POST">
+				<form action="/viaje/nuevo" method="POST">
 					<div class="container">
 						<div class="row">
 							<div class="col-sm-3">
 								<div class="form-group">
 	        						<label for="rdate">Fecha de retiro</label>
-	           						<input type='text' name="rdate" class="form-control" id='datepicker' placeholder="dd/mm/YYYY" />
+	           						<input type='date' name="rdate" class="form-control" id='datepicker' placeholder="dd/mm/YYYY" required />
 	           					</div>
 							</div>
 							<div class="col-sm-3">
 								<div class="form-group">
 	        						<label for="rtime">Hora de retiro</label>
 	        						<div class="input-group clockpicker" data-placement="left" data-align="top" data-autoclose="true">
-	           						<input type='text' name="rtime" class="form-control" id='timeformat' placeholder="HH:MM" />
-	           						<span class="input-group-addon">
-	        <span class="glyphicon glyphicon-time"></span>
-	    </span>
-	    </div>
-	    </div>
+	           							<input type='time' name="rtime" class="form-control" id='timeformat' placeholder="HH:MM" required />
+	           							<span class="input-group-addon">
+	        								<span class="glyphicon glyphicon-time"></span>
+	    								</span>
+	    							</div>
+	    						</div>
 							</div>
-								</div>
-	    <div class="form-group">
-					<label for="id">Estaciones</label>
-					<select name="id" id="id" class="custom-select">
-						<% @objestacion.each do |item| %>
-						<option value=<%= item[0] %>><%= item[1].nombre %></option>
-						<% end %>
-					</select>
-					</div>
-					<div class="form-group">
-					<label for="id">Usuarios (Nombre - Apellido)</label>
-					<select name="id" id="id" class="custom-select">
-						<% @objusuario.each do |item| %>
-						<option value=<%= item[0] %>><%= item[1].nombre + " " + item[1].apellido %> </option>
-						<% end %>
-					</select>
-					</div>
+						</div>
+	    				<div class="form-group">
+							<label for="dret">Estacion de retiro</label>
+							<select name="dret" id="dret" class="custom-select">
+							<% @objestacion.each do |item| %>
+								<option value=<%= item[0] %>><%= item[1].nombre %></option>
+								<% end %>
+							</select>
+						</div>
+						<div class="form-group">
+							<label for="dest">Estacion de destino</label>
+							<select name="dest" id="dest" class="custom-select">
+							<% @objestacion.each do |item| %>
+								<option value=<%= item[0] %>><%= item[1].nombre %></option>
+								<% end %>
+							</select>
+						</div>
+						<div class="form-group">
+							<label for="user">Usuarios (Nombre - Apellido)</label>
+							<select name="user" id="user" class="custom-select">
+							<% @objusuario.each do |item| %>
+								<option value=<%= item[0] %>><%= item[1].nombre + " " + item[1].apellido %> </option>
+							<% end %>
+							</select>
+						</div>
+						<div class="form-group">
+	        				<label for="duracion">Duración</label>
+	           				<input type='time' name="duracion" class="form-control" id='duracion' placeholder="Amount of HH:MM" required/>
+	           			</div>
 						<div class="form-group">
 							<button class="btn btn-success" type="submit">Enviar</button>	
 						</div>

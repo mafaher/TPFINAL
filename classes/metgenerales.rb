@@ -15,6 +15,7 @@ class Metodo
 		def modificarentidad(obj, id, entidad)
 		@store = YAML::Store.new entidad+'.yml'
 		@store.transaction do 	
+		@store[entidad] ||={}
         @store[entidad][id] = obj
     end
 	end

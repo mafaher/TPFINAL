@@ -70,6 +70,19 @@ get "/viaje/nuevo" do
 	erb :viajenew
 end
 
+post "/viaje/nuevo" do
+	rdate=params[:rdate]	
+	rtime=params[:rtime]
+	dret=params[:dret]
+	dest=params[:dest]
+	user=params[:user]
+	dur=params[:duracion]
+    @viaje=Viaje.new(rdate, rtime, dur, user, dest, dret)
+    @check=Metodo.new().crearentidad(@viaje, "viajes");
+    @title="Viaje ha sido creado satisfactoriamente."
+    erb :goodnews
+end
+
 get "/importar/:name" do 	
 	@name=params[:name]
 	erb :import
@@ -79,6 +92,46 @@ post "/importar/:name" do
 
 	file_data=params[:file][:tempfile].read
 	@data=CSV.parse(file_data, headers: true, col_sep: ";").map(&:to_h)	
+	if params[:name]=="usuarios"
+		var=true
+		@data.each do |dato|
+			if dato["nombre"].to_s.empty?
+				dato["nombre"] = " "	
+			end
+			if dato["apellido"].to_s.empty?
+				dato["apellido"] = " "
+			end
+			usuario=Usuario.new(dato["nombre"],dato["apellido"])
+			metodos=Metodo.new().modificarentidad(usuario,dato["id"].to_i,"usuarios")
+		end
+		@title="Carga de usuarios masiva, concluida satisfactoriamente"
+	elsif params[:name]=="bicis"
+		var=true
+		@data.each do |dato|
+			estaciondest=Estacion.new(dato["NOMBRE_DESTINO"])
+			estacionor=Estacion.new(dato["NOMBRE_ORIGEN"])
+		    dato["FECHA_HORA_RETIRO"]= dato["FECHA_HORA_RETIRO"].strip.split(/\s+/)
+		    fretiro=dato["FECHA_HORA_RETIRO"][0]
+		    hretiro=dato["FECHA_HORA_RETIRO"][1]
+		    dato["TIEMPO_USO"]=dato["TIEMPO_USO"].gsub("H|MIN|SEG", ' ').strip.split(" ")
+		    duracion=dato["TIEMPO_USO"][0]+":"+dato["TIEMPO_USO"][1]
+			viaje=Viaje.new(fretiro, hretiro, duracion, dato["ID_USUARIO"],dato["DESTINO_ESTACION"],dato["ORIGEN_ESTACION"])
+			Metodo.new().modificarentidad(estaciondest,dato["DESTINO_ESTACION"].to_i,"estaciones")
+			Metodo.new().modificarentidad(estacionor, dato["ORIGEN_ESTACION"].to_i,"estaciones")
+			Metodo.new().crearentidad(viaje, "viajes");
+		end
+		@title="Carga de viajes y estaciones masiva, concluida satisfactoriamente"
+	else
+		var=false
+		@title="El archivo indicado no es el correcto, favor de volver a intentarlo"
+	end
+
+	if var==true
+		erb :goodnews
+	else
+		erb :badnews
+	end
+
 end
 
 post "/usuario/nuevo" do 
