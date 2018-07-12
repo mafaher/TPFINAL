@@ -143,7 +143,7 @@ get "/reportes/viajesrecientes" do
 	@objviajes = Metodo.new().traerentidad("viajes")
 	@objviajes = @objviajes.sort_by {|key, v| DateTime.strptime(v.fretiro+" "+v.hretiro, '%d/%m/%Y %H:%M')}.reverse! 
 	@objusuarios=Metodo.new().traerentidad("usuarios")
-	erb :testingpar
+	erb :ultimosviajes
 end
 
 post "/usuario/nuevo" do 
