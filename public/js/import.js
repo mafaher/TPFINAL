@@ -56,3 +56,6 @@
    		 reader.readAsText(file);
 		}
     );
+
+
+$("#enviar").on("click",function(){$(this).addClass("disable").attr("disabled",true)})

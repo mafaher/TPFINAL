@@ -40,7 +40,7 @@ $(function () {
 							</div>
 						</div>
 	    				<div class="form-group">
-							<label for="dret">Estacion de retiro</label>
+							<label for="dret">Origen</label>
 							<select name="dret" id="dret" class="custom-select">
 							<% @objestacion.each do |item| %>
 								<option value=<%= item[0] %>><%= item[1].nombre %></option>
@@ -48,7 +48,7 @@ $(function () {
 							</select>
 						</div>
 						<div class="form-group">
-							<label for="dest">Estacion de destino</label>
+							<label for="dest">Destino</label>
 							<select name="dest" id="dest" class="custom-select">
 							<% @objestacion.each do |item| %>
 								<option value=<%= item[0] %>><%= item[1].nombre %></option>
@@ -64,8 +64,8 @@ $(function () {
 							</select>
 						</div>
 						<div class="form-group">
-	        				<label for="duracion">Duración</label>
-	           				<input type='time' name="duracion" class="form-control" id='duracion' placeholder="Amount of HH:MM" required/>
+							<label for="duracion">Tiempo de Uso</label>
+	           				<input type='time' name="duracion" class="form-control" id='duracion'required step="1"/>
 	           			</div>
 						<div class="form-group">
 							<button class="btn btn-success" type="submit">Enviar</button>	

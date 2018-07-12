@@ -1,1 +1,11 @@
-<%= @title %>
+<% @objviajes.each do |item| limit 10 %>
+<label> Fecha de retiro</label>
+<%= item[1].fretiro+ " "+item[1].hretiro  %> </br>
+<label >Fecha de devolucion</label>
+<% duration=item[1].tiempouso.split(":") %>
+<% retdate=Time.parse(item[1].fretiro+ " "+item[1].hretiro) %>
+<%= retdate %></br> <%= duration.to_s %> </br>
+<% total=retdate+(duration[0].to_i*3600 + duration[1].to_i*60 + duration[2].to_i) %>
+<%= total.strftime('%d/%m/%Y %H:%M:%S') %> </br>
+<p>----------------------------</p>
+<% end %>

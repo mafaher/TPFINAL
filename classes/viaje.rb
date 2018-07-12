@@ -11,24 +11,4 @@ class Viaje
 		@estretiro = estretiro
 	end
 
-	def mostrarultimosdiez()
-
-	end
-
-	def fechaderetiromayor()
-
-	end
-
-	def cantidadpordia()
-
-	end
-
-	def cantidadporhorario()
-
-	end
-
-	def usuariosmayoruso()
-
-	end
-
 end
