@@ -1,0 +1,116 @@
+<div class="container">
+	<div class="row">
+	<div class="col-md-4">
+		<div class="card">
+		<div class="card-header">
+			<h4 class="header">Top 10 usuarios:</h4>
+		</div>
+		<div class="card-body">
+			<div class="table-responsive-sm">
+				<table class="table table-bordered">
+					<thead class="thead-light">
+						<tr>
+							<th>Usuario</th>
+							<th>Cantidad</th>
+						</tr>
+					</thead>
+					<tbody>
+						<% 10.times do |i|  %>
+						<tr>
+							<td>
+								<%= @objusuarios[@userhash[i][0].to_i].nombre+ " " + @objusuarios[@userhash[i][0].to_i].apellido%>
+							</td>
+							<td>
+								<%= @userhash[i][1] %>
+							</td>
+						</tr>
+						<% end %>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+	<div class="col-md-4">
+		<div class="card">
+		<div class="card-header">
+			<h4 class="header">Estadisticas por dia:</h4>
+		</div>
+		<div class="card-body">
+			<div class="table-responsive-sm">
+				<table class="table table-bordered">
+					<thead class="thead-light">
+						<tr>
+							<th>Dia</th>
+							<th>Porcentaje</th>
+						</tr>
+					</thead>
+					<tbody>
+						<% @dailyhash.each do |day| %>
+						<tr>
+							<td>
+								<%= day[0] %>
+							</td>
+							<td>
+								<% day[1]=day[1].to_i*100/@mayordaily.to_i %>
+								<%= PillChart::SimplePillChart.new(15,100,day[1],100,:state,{"background"=>"gray", "low"=>"red", "medium"=>"yellow","high"=>"blue","full"=>"green"}).pill %>
+							</td>
+						</tr>
+						<% end %>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>
+
+	<div class="col-md-4">
+		<div class="card">
+		<div class="card-header">
+			<h4 class="header">Estadisticas por franja horaria:</h4>
+		</div>
+		<div class="card-body">
+			<div class="table-responsive-sm">
+				<table class="table table-bordered">
+					<thead class="thead-light">
+						<tr>
+							<th>Franja</th>
+							<th>Porcentaje</th>
+						</tr>
+					</thead>
+					<tbody>
+						<% @hourlyhash.each do |hours| %>
+						<tr>
+							<td>
+<% case hours[0] %>
+<% when "first" %>
+<% label= "0 Hs a 8 Hs" %> 
+<% when "second" %>
+<% label= "8 Hs a 12 Hs" %> 
+<% when "third" %>
+<% label= "12 Hs a 16 Hs" %> 
+<% when "fourth" %>
+<% label= "16 Hs a 20 Hs" %> 
+<% else %>
+<% label= "20 Hs a 0 Hs" %> 
+<% end %>
+<%= label %>
+</td>
+<td>
+<% hours[1]=hours[1].to_i*100/@mayorhourly.to_i %>
+<%= PillChart::SimplePillChart.new(15,100,hours[1],100,:state,{"background"=>"gray", "low"=>"red", "medium"=>"yellow","high"=>"blue","full"=>"green"}).pill %>
+</td>
+</tr>
+<% end %>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+</div>
+</div>

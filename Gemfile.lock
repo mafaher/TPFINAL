@@ -1,6 +1,8 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    csv (3.0.0)
+    pill_chart (1.0.2)
     rack (1.6.10)
     rack-protection (1.5.5)
       rack
@@ -17,6 +19,8 @@ PLATFORMS
   x86-mingw32
 
 DEPENDENCIES
+  csv
+  pill_chart (~> 1.0.2)
   shotgun
   sinatra (~> 1.4)
   yaml_store

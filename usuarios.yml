@@ -759,8 +759,8 @@ usuarios:
     edad: 0
     fechacreacion: blank
   127: !ruby/object:Usuario
-    nombre: Newers
-    apellido: nwoa
-    sexo: N
-    edad: 22
-    fechacreacion: 12/7/2018
+    nombre: Anakin
+    apellido: Skywalker
+    sexo: blank
+    edad: 0
+    fechacreacion: blank

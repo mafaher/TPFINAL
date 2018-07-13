@@ -5,6 +5,7 @@ require './classes/viaje.rb'
 require './classes/usuario.rb'
 require 'csv'
 require './classes/metgenerales.rb'
+require 'pill_chart'
 
 
 get "/" do
@@ -213,4 +214,69 @@ else
 	@title="No hay ningun viaje o estacion cargados"
 	erb :badnews
 end
+end
+
+get "/reportes/estadisticas" do
+
+	objmetodo=Metodo.new()
+	objviajes=objmetodo.traerentidad("viajes")
+	@objusuarios=objmetodo.traerentidad("usuarios")
+	if objviajes.nil? || @objusuarios.nil?
+		@title="No hay viajes o usuarios cargardos"
+		erb :badnews
+	else
+		@userhash={}
+		@hourlyhash={"first"=>0,"second"=>0,"third"=>0,"fourth"=>0,"fifth"=>0}
+		@dailyhash={"Lunes"=>0, "Martes"=>0,"Miercoles"=>0,"Jueves"=>0,"Viernes"=>0,"Sabado"=>0,"Domingo"=>0}
+		objviajes.each do |viaje|
+			#Estadisticas Top 10 usuarios
+			if @userhash.has_key?(viaje[1].iduser)
+				@userhash[viaje[1].iduser] += 1
+			else
+				@userhash[viaje[1].iduser] = 1
+			end
+
+			#Estadistica Dia de la semana
+			viaje[1].fretiro=Date.parse(viaje[1].fretiro)
+
+			if viaje[1].fretiro.monday?
+				@dailyhash["Lunes"]+=1
+			elsif viaje[1].fretiro.tuesday?
+				@dailyhash["Martes"]+=1
+			elsif viaje[1].fretiro.wednesday?
+				@dailyhash["Miercoles"]+=1
+			elsif viaje[1].fretiro.thursday?
+				@dailyhash["Jueves"]+=1
+			elsif viaje[1].fretiro.friday?
+				@dailyhash["Viernes"]+=1
+			elsif viaje[1].fretiro.saturday?
+				@dailyhash["Sabado"]+=1
+			else
+				@dailyhash["Domingo"]+=1
+			end
+
+			#Estadistica horario
+			hour=viaje[1].hretiro.split(":")[0].to_i
+ 			
+			if hour >= 0 && hour < 8
+				@hourlyhash["first"]+=1
+			elsif hour >= 8 && hour < 12
+				@hourlyhash["second"]+=1
+			elsif hour >= 12 && hour < 16
+				@hourlyhash["third"]+=1
+			elsif hour >= 16 && hour < 20
+				@hourlyhash["fourth"]+=1
+			else
+				@hourlyhash["fifth"]+=1
+			end
+
+			
+		end
+		@userhash=@userhash.sort_by{|key, value| value}.reverse!
+		@mayordaily=@dailyhash.sort_by{|key, value| value}.reverse![0][1]
+		@mayorhourly=@hourlyhash.sort_by{|key, value| value}.reverse![0][1]
+
+		erb :estadisticas
+		end
+
 end
