@@ -1,6 +1,6 @@
 class Estacion
-	attr_accessor :nombre
-	attr_reader :id, :retiradas, :devueltas
+	attr_accessor :nombre,:retiradas,:devueltas
+	attr_reader :id
 
 	def initialize(nombre, retiradas=0, devueltas=0)
 		@nombre = nombre 

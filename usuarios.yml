@@ -759,8 +759,8 @@ usuarios:
     edad: 0
     fechacreacion: blank
   127: !ruby/object:Usuario
-    nombre: Matias
-    apellido: Hernandez
-    sexo: M
-    edad: 28
+    nombre: Newers
+    apellido: nwoa
+    sexo: N
+    edad: 22
     fechacreacion: 12/7/2018

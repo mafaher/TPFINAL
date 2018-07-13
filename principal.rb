@@ -17,8 +17,12 @@ end
 
 get "/usuario/modificar" do
 	@objusuario = Metodo.new().traerentidad("usuarios")
-
+	if !@objusuario.nil?
 	erb :selectusuario
+else
+	@title="No hay usuarios cargados"
+	erb :badnews
+end
 end
 
 post "/usuario/modificar" do
@@ -46,7 +50,12 @@ end
 
 get "/estacion/modificar" do  
 	@objestacion = Metodo.new().traerentidad("estaciones")
+	if !@objestacion.nil?
 	erb :selectstation
+else
+	@title="No hay estaciones cargadas"
+	erb :badnews
+end
 end
 
 post "/estacion/modificar" do
@@ -68,7 +77,12 @@ end
 get "/viaje/nuevo" do  
 	@objestacion = Metodo.new().traerentidad("estaciones")
 	@objusuario = Metodo.new().traerentidad("usuarios")
+	if !@objestacion.nil? && !@objusuario.nil?
 	erb :viajenew
+else
+	@title="Favor de cargar primero usuarios y estaciones"
+	erb :badnews
+end
 end
 
 post "/viaje/nuevo" do
@@ -78,6 +92,7 @@ post "/viaje/nuevo" do
 	dest=params[:dest]
 	user=params[:user]
 	dur=params[:duracion]
+	rdate=Date.parse(rdate).strftime("%d/%m/%Y")
     @viaje=Viaje.new(rdate, rtime, dur, user, dest, dret)
     @check=Metodo.new().crearentidad(@viaje, "viajes");
     @title="Viaje ha sido creado satisfactoriamente."
@@ -115,7 +130,7 @@ post "/importar/:name" do
 		    fretiro=dato["FECHA_HORA_RETIRO"][0]
 		    hretiro=dato["FECHA_HORA_RETIRO"][1]
 		    dato["TIEMPO_USO"]=dato["TIEMPO_USO"].gsub(/[H|MIN|SEG]/, '').strip.split(" ")
-		    if dato["TIEMPO_USO"][2].to_s=="" || dato["TIEMPO_USO"][2].to_s== nil
+		    if dato["TIEMPO_USO"][2].to_s==""
 		    	dato["TIEMPO_USO"][2]="00"
 		    end
 		    duracion=dato["TIEMPO_USO"][0].to_s+":"+dato["TIEMPO_USO"][1].to_s+":"+dato["TIEMPO_USO"][2].to_s
@@ -141,9 +156,14 @@ end
 
 get "/reportes/viajesrecientes" do 
 	@objviajes = Metodo.new().traerentidad("viajes")
-	@objviajes = @objviajes.sort_by {|key, v| DateTime.strptime(v.fretiro+" "+v.hretiro, '%d/%m/%Y %H:%M')}.reverse! 
 	@objusuarios=Metodo.new().traerentidad("usuarios")
+	if !@objviajes.nil? && !@objusuarios.nil?
+	@objviajes = @objviajes.sort_by {|key, v| DateTime.strptime(v.fretiro+" "+v.hretiro, '%d/%m/%Y %H:%M')}.reverse!
 	erb :ultimosviajes
+else
+	@title="No hay ningun viaje o usuario cargados"
+	erb :badnews
+	end
 end
 
 post "/usuario/nuevo" do 
@@ -165,4 +185,32 @@ post "/estacion/nuevo"  do
 	@objmetodo=Metodo.new().crearentidad(estacion, "estaciones")
 	@title="Estacion ha sido creada satisfactoriamente."
 	erb :goodnews
+end
+
+get "/reportes/efrd" do
+	objmetodos=Metodo.new()
+	fretiradas = {}
+	objviajes=objmetodos.traerentidad("viajes")
+	objestaciones=objmetodos.traerentidad("estaciones")
+	if !objviajes.nil? && !objestaciones.nil?
+	objviajes.each do |viaje|
+		idestr=(viaje[1].estretiro).to_i
+		idestd=(viaje[1].estdestino).to_i
+		objestaciones[idestr].retiradas += 1
+		objestaciones[idestd].devueltas += 1
+		if fretiradas.has_key?(viaje[1].fretiro)
+			fretiradas[viaje[1].fretiro]+=1
+		else
+			fretiradas[viaje[1].fretiro]=1
+		end
+	end
+	@listaretiradas=objestaciones.sort_by {|key, v| v.retiradas}.reverse!
+	@listadevueltas=objestaciones.sort_by {|key, v| v.devueltas}.reverse!
+	@fecharetiradas=fretiradas.sort_by { |key, v| v }.reverse!
+
+	erb :retiradasdevueltas
+else
+	@title="No hay ningun viaje o estacion cargados"
+	erb :badnews
+end
 end
